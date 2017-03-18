@@ -13,27 +13,27 @@ gulp.task('default', () => {
 //js:最小化
 gulp.task('script', () => {
   gulp.src('src/**/*.js')
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
 //css:转为css、最小化、重命名
 gulp.task('style', () => {
   gulp.src('src/**/*.scss')
     .pipe(sass())
-    .pipe(mincss())
+    // .pipe(mincss())
     .pipe(rename({ extname: '.wxss' }))
     .pipe(gulp.dest('dist'));
 });
 //html:最小化
 gulp.task('html', () => {
   gulp.src('src/**/*.wxml')
-    .pipe(minhtml())
+    // .pipe(minhtml())
     .pipe(gulp.dest('dist'));
 });
 //json:最小化
 gulp.task('json', () => {
   gulp.src('src/**/*.json')
-    .pipe(minjson())
+    // .pipe(minjson())
     .pipe(gulp.dest('dist'));
 });
 //图片:复制过去，不做操作
