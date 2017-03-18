@@ -5,9 +5,9 @@ App({
     console.log('应用全局载入事件');
   },
   getUserInfo:function(cb){
-    console.log('全局函数');
+    console.log('全局函数!');
   },
   globalData:{
-    userInfo:'ltq'
+    userInfo:'ltq1238888888'
   }
 })
