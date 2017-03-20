@@ -6,7 +6,7 @@ const gulp = require('gulp');
 // const minhtml = require('gulp-minify-html');
 // const minjson = require('gulp-jsonminify');
 //自动加载package.json中的gulp模块
-plugins=require('gulp-load-plugins')();
+plugins = require('gulp-load-plugins')();
 
 
 gulp.task('default', () => {
@@ -21,11 +21,11 @@ gulp.task('script', () => {
 });
 //css:转为css、最小化、重命名
 gulp.task('style', () => {
-  gulp.src('src/**/*.scss')
-    .pipe(plugins.sass())
-    // .pipe(mincss())
-    .pipe(plugins.rename({ extname: '.wxss' }))
-    .pipe(gulp.dest('dist'));
+    gulp.src('src/**/*.scss')
+      .pipe(plugins.sass().on('error', plugins.sass.logError))
+      // .pipe(mincss())
+      .pipe(plugins.rename({ extname: '.wxss' }))
+      .pipe(gulp.dest('dist'));
 });
 //html:最小化
 gulp.task('html', () => {
