@@ -4,7 +4,7 @@
   "description": "豆瓣微信小程序",
   "main": "app.js",
   "scripts": {
-    "watch":"gulp watch",
+    "watch": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,5 +32,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.1.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0"
   }
 }
