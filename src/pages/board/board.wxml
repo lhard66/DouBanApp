@@ -1,0 +1,4 @@
+<!--board.wxml-->
+<view class="container">
+	board container...
+</view>
