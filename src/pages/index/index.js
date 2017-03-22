@@ -3,7 +3,11 @@
 var app = getApp()
 Page({
   data: {
-    boards: {url:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'}
+    boards: [
+      { key: 'in_theaters' },
+      { key: 'coming_soon' },
+      { key: 'top250' }
+    ]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -11,7 +15,7 @@ Page({
     console.log('hello ltq,ht.');
   },
   onLoad: function() {
-    var _this=this;
+    var _this = this;
     wx.request({
       url: 'https://api.douban.com/v2/movie/in_theaters',
       data: {
@@ -21,10 +25,12 @@ Page({
         'content-type': 'json'
       },
       success: function(res) {
-        console.log(res.data);
+        // console.log(res.data);
         // _this.data.boards.setData({url:'143912755726.jpg'});
-        _this.setData({boards:'123'});
-        console.log(_this.data.boards);
+        _this.setData({ 'boards[0].title': res.data.title });
+        _this.setData({ 'boards[0].movies': res.data.subjects });
+        // _this.setData({ boards:'123' });
+        console.log(_this.data.boards[0].key);
         return _this.data.boards;
       }
     })
