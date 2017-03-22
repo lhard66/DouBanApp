@@ -1,3 +1,5 @@
+const Promise = require('../../utils/bluebird.js')
+
 var app = getApp()
 
 Page({
@@ -9,24 +11,21 @@ Page({
     ]
   },
   onLoad: function() {
-    // var _this = this;
-    // wx.request({
-    //   url: 'https://api.douban.com/v2/movie/in_theaters',
-    //   data: {
-    //     count: 3
-    //   },
-    //   header: {
-    //     'content-type': 'json'
-    //   },
-    //   success: function(res) {
-
-    //   }
-    // })
-    //console.log(app.wxfetch)
-    //{ header: { 'content-type': 'json' } }, 
-    app.wxfetch(app.URI + 'in_theaters')
-      .then(res => {
-        console.log(res.data)
+    let _this = this;
+    let board_promise = this.data.boards.map(board => {
+      return app.wxfetch(app.URI + board.key, { data: { count: 6 } }).then(res => {
+        board.title = res.data.title
+        board.movies = res.data.subjects
+        return board
       })
+    })
+    Promise.all(board_promise).then(boards => {
+      _this.setData({ boards: boards })
+    })
   }
+
+  // app.wxfetch(app.URI + 'in_theaters')
+  //   .then(res => {
+  //     console.log(res.data)
+  //   })
 })

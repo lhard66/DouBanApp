@@ -16,6 +16,7 @@ module.exports = (url, options, method = 'GET', header = { 'content-type': 'json
         fail: reject
       }
       if (options) {
+      	console.log(options)
         params = Object.assign(params, options);
       }
       wx.request(params)
