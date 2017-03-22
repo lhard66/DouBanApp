@@ -6,11 +6,12 @@ const Promise = require('./bluebird')
  * @param  {Object} options	其它参数
  * @return {Promise} 
  */
-module.exports = (options, url, method) => {
+module.exports = (url, options, method = 'GET', header = { 'content-type': 'json' }) => {
     return new Promise((resolve, reject) => {
       let params = {
         url,
         method,
+        header: header,
         success: resolve,
         fail: reject
       }
@@ -20,4 +21,4 @@ module.exports = (options, url, method) => {
       wx.request(params)
     })
   }
-// module.exports = _wxfetch
+  // module.exports = _wxfetch
