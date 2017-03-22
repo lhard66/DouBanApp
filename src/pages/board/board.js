@@ -22,9 +22,9 @@ Page({
 
     //   }
     // })
-    console.log(app.wxfetch)
-
-    app.wxfetch({ header: { 'content-type': 'json' } }, 'https://api.douban.com/v2/movie/in_theaters', 'GET')
+    //console.log(app.wxfetch)
+    //{ header: { 'content-type': 'json' } }, 
+    app.wxfetch(app.URI + 'in_theaters')
       .then(res => {
         console.log(res.data)
       })
