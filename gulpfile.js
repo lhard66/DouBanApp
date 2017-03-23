@@ -1,4 +1,6 @@
 const gulp = require('gulp');
+// const del = require('del');
+// const vinylPaths = require('vinyl-paths');
 // const uglify = require('gulp-uglify');
 // const sass = require('gulp-sass');
 // const rename = require('gulp-rename');
@@ -21,11 +23,11 @@ gulp.task('script', () => {
 });
 //css:转为css、最小化、重命名
 gulp.task('style', () => {
-    gulp.src('src/**/*.scss')
-      .pipe(plugins.sass().on('error', plugins.sass.logError))
-      // .pipe(mincss())
-      .pipe(plugins.rename({ extname: '.wxss' }))
-      .pipe(gulp.dest('dist'));
+  gulp.src('src/**/*.scss')
+    .pipe(plugins.sass().on('error', plugins.sass.logError))
+    // .pipe(mincss())
+    .pipe(plugins.rename({ extname: '.wxss' }))
+    .pipe(gulp.dest('dist'));
 });
 //html:最小化
 gulp.task('html', () => {
@@ -41,13 +43,21 @@ gulp.task('json', () => {
 });
 //图片:复制过去，不做操作
 gulp.task('img', () => {
-  gulp.src('src/**/**.@(png|jpg|gif|jpeg)')
+  gulp.src('src/**/*.@(png|jpg|gif|jpeg)')
     .pipe(gulp.dest('dist'));
-})
+});
+
+//监视：删除文件
+// gulp.task('clean', () => {
+//   return gulp.src('src/**/*')
+//     .pipe(gulp.dest('dist'))
+//     .pipe(vinylPaths(del));
+// });
+
 gulp.task('watch', () => {
   gulp.watch('src/**/*.js', ['script']);
   gulp.watch('src/**/*.scss', ['style']);
   gulp.watch('src/**/*.wxml', ['html']);
   gulp.watch('src/**/*.json', ['json']);
-  gulp.watch('src/**/*.@(png|jpg|gif|jpeg)', ['img']);
+  gulp.watch('src/**/*.@(png|jpg|gif|jpeg)', ['img']);  
 });

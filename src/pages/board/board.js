@@ -22,10 +22,5 @@ Page({
     Promise.all(board_promise).then(boards => {
       _this.setData({ boards: boards })
     })
-  }
-
-  // app.wxfetch(app.URI + 'in_theaters')
-  //   .then(res => {
-  //     console.log(res.data)
-  //   })
+  }  
 })
