@@ -6,8 +6,8 @@ Page({
   data: {
     boards: [
       { key: 'in_theaters' },
-      { key: 'coming_soon' },
-      { key: 'top250' }
+      { key: 'coming_soon1' },
+      { key: 'top2501' }
     ]
   },
   onLoad: function() {
@@ -22,5 +22,5 @@ Page({
     Promise.all(board_promise).then(boards => {
       _this.setData({ boards: boards })
     })
-  }  
+  }
 })
