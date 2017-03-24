@@ -6,8 +6,8 @@ Page({
   data: {
     boards: [
       { key: 'in_theaters' },
-      { key: 'coming_soon1' },
-      { key: 'top2501' }
+      { key: 'coming_soon' },
+      { key: 'top250' }
     ]
   },
   onLoad: function() {
