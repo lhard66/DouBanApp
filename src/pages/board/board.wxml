@@ -16,8 +16,10 @@
       <scroll-view class="board-scroll" scroll-x="true">
         <view class="content">
           <view class="movie-item" wx:for="{{item.movies}}" wx:key="{{item.id}}">
-            <image src="{{item.images.large}}" mode="aspectFill" />
-            <text>{{item.title}}</text>
+            <navigator url="../item/item?id={{ item.id }}">
+              <image src="{{item.images.large}}" mode="aspectFill" />
+              <text>{{item.title}}</text>
+            </navigator>
           </view>
         </view>
       </scroll-view>
