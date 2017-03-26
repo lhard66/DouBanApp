@@ -10,9 +10,12 @@
   </view>
   <view class="board">
     <view class="board-item" wx:for="{{boards}}" wx:key="{{item.key}}">
-      <view class="title">
-        <text>{{item.title}}</text>
-      </view>
+      <navigator url="../list/list?type={{ item.key }}">
+        <view class="title">
+          <text>{{item.title}}</text>
+          <image src="../../images/arrowright.png" mode="aspectFill"/>
+        </view>
+      </navigator>
       <scroll-view class="board-scroll" scroll-x="true">
         <view class="content">
           <view class="movie-item" wx:for="{{item.movies}}" wx:key="{{item.id}}">

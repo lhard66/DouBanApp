@@ -15,8 +15,18 @@
   .board-item {
     margin: 40rpx 0;
     .title {
+      height: 30rpx;
       font-size: 30rpx;
-      padding-left:10rpx;
+      padding-left: 10rpx;
+      display: flex;
+      text {
+        flex: 1;
+      }
+      image {
+        height: 30rpx;
+        width: 30rpx;
+        line-height: 25rpx;
+      }
     }
     .board-scroll {
       height: 260rpx;
@@ -47,3 +57,4 @@
     }
   }
 }
+

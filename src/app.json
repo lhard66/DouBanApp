@@ -1,8 +1,8 @@
 {
   "pages":[    
-    "pages/item/item",
     "pages/board/board",    
     "pages/list/list",
+    "pages/item/item",
     "pages/index/index"
   ],
   "window":{
