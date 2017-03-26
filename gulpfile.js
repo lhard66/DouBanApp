@@ -12,41 +12,55 @@ plugins = require('gulp-load-plugins')();
 
 
 gulp.task('default', () => {
-  console.log('hello world');
+    console.log('hello world');
 });
 
 //js:最小化
 gulp.task('script', () => {
-  gulp.src('src/**/*.js')
-    // .pipe(plugins.uglify())
-    .pipe(gulp.dest('dist'));
+    gulp.src('src/**/*.js')
+        // .pipe(plugins.uglify())
+        .pipe(gulp.dest('dist'));
 });
 //css:转为css、最小化、重命名
 gulp.task('style', () => {
-  gulp.src('src/**/*.scss')
-    .pipe(plugins.sass().on('error', plugins.sass.logError))
-    // .pipe(mincss())
-    .pipe(plugins.rename({ extname: '.wxss' }))
-    .pipe(gulp.dest('dist'));
+    gulp.src('src/**/*.scss')
+        .pipe(plugins.sass().on('error', plugins.sass.logError))
+        // .pipe(mincss())
+        .pipe(plugins.rename({ extname: '.wxss' }))
+        .pipe(gulp.dest('dist'));
 });
 //html:最小化
 gulp.task('html', () => {
-  gulp.src('src/**/*.wxml')
-    // .pipe(plugins.minhtml())
-    .pipe(gulp.dest('dist'));
+    gulp.src('src/**/*.wxml')
+        // .pipe(plugins.minhtml())
+        .pipe(gulp.dest('dist'));
 });
 //json:最小化
 gulp.task('json', () => {
-  gulp.src('src/**/*.json')
-    // .pipe(plugins.minjson())
-    .pipe(gulp.dest('dist'));
+    gulp.src('src/**/*.json')
+        // .pipe(plugins.minjson())
+        .pipe(gulp.dest('dist'));
 });
 //图片:复制过去，不做操作
 gulp.task('img', () => {
-  gulp.src('src/**/*.@(png|jpg|gif|jpeg)')
-    .pipe(gulp.dest('dist'));
+    gulp.src('src/**/*.@(png|jpg|gif|jpeg)')
+        .pipe(gulp.dest('dist'));
 });
-
+//构建
+gulp.task('build', () => {
+    gulp.src([
+            'src/**/*.@(png|jpg|gif|jpeg)',
+            'src/**/*.json',
+            'src/**/*.wxml',
+            'src/**/*.js'
+        ])
+        .pipe(gulp.dest('dist'));
+    gulp.src('src/**/*.scss')
+        .pipe(plugins.sass().on('error', plugins.sass.logError))
+        // .pipe(mincss())
+        .pipe(plugins.rename({ extname: '.wxss' }))
+        .pipe(gulp.dest('dist'));
+});
 //监视：删除文件
 // gulp.task('clean', () => {
 //   return gulp.src('src/**/*')
@@ -55,9 +69,9 @@ gulp.task('img', () => {
 // });
 
 gulp.task('watch', () => {
-  gulp.watch('src/**/*.js', ['script']);
-  gulp.watch('src/**/*.scss', ['style']);
-  gulp.watch('src/**/*.wxml', ['html']);
-  gulp.watch('src/**/*.json', ['json']);
-  gulp.watch('src/**/*.@(png|jpg|gif|jpeg)', ['img']);  
+    gulp.watch('src/**/*.js', ['script']);
+    gulp.watch('src/**/*.scss', ['style']);
+    gulp.watch('src/**/*.wxml', ['html']);
+    gulp.watch('src/**/*.json', ['json']);
+    gulp.watch('src/**/*.@(png|jpg|gif|jpeg)', ['img']);
 });
