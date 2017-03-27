@@ -1,3 +1,19 @@
 <view class="container">
-	list...
+  <scroll-view scroll-y="true" class="list" bindscrolltolower="handleLoadMore">
+    <view class="item" wx:for="{{movies.subjects}}" wx:key="{{item.id}}">
+      <navigator url="../item/item?id={{ item.id }}" hover-class="none">
+        <image class="poster" src="{{item.images.large}}" mode="aspectFit" />
+        <view class="meta">
+          <text class="title">{{item.title}}</text>
+          <text class="sub-title">{{item.original_title}}</text>
+          <text class="artists">
+            <block wx:for="{{item.directors}}" wx:key="{{item.id}}">{{item.name}} </block>
+          </text>
+        </view>
+        <view class="rating">
+          <text class="score">{{item.rating.average}}</text>
+        </view>
+      </navigator>
+    </view>
+  </scroll-view>
 </view>

@@ -7,7 +7,7 @@ Page({
   },
   onLoad: function(params) {
     let _this = this
-    let type = params.type
+    let type = params.type || 'in_theaters'
     let start = 0
     this.getMovies(type, start)
   },
