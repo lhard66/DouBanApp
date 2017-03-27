@@ -1,0 +1,15 @@
+@import '../common/movie-list.scss';
+.list{
+	height: 168*10rpx;
+}
+.header {
+  border-bottom: 1px solid #ccc;
+  padding: 10rpx 20rpx;
+  width: 710rpx;
+  .search {
+    width: 100%;
+    font-size: 38rpx;
+    text-align: center;
+    color: #666;
+  }
+}

@@ -6,7 +6,8 @@ Page({
     movieCount: 10, //访问一次网络请求的数据条数
     movieStart: 0,
     movieType: '',
-    hasMore: true
+    hasMore: true,
+    showLoading: false
   },
   onLoad: function(params) {
     let _this = this
@@ -17,12 +18,14 @@ Page({
     this.getMovies(type, 0)
     this.setData({ movieType: type })
   },
-  getMovies: function(movieType, movieStart) {
+  getMovies: function(movieType) {
     let _this = this
     app.wxfetch(app.URI + movieType, { data: { count: _this.data.movieCount, start: _this.data.movieStart } })
       .then(res => {
         if (res.data.subjects.length) {
           _this.setData({ movies: _this.data.movies.concat(res.data.subjects), movieStart: _this.data.movieStart + 10 })
+            //获得数据后显示加载提示
+          _this.setData({ showLoading: true })
         } else {
           _this.setData({ hasMore: false })
         }
