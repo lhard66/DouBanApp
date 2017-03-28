@@ -1,0 +1,9 @@
+<view class="container">
+	<text class="title">{{title}}</text>
+	<view class="content">
+		<text wx:for="{{rows}}" wx:key="index">{{item}}</text>
+	</view>
+	<view class="explain">
+		<text wx:for="{{explain}}" wx:key="index">{{item}}</text>
+	</view>
+</view>
