@@ -33,7 +33,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/profile/profile",
+        "pagePath": "pages/me/me",
         "iconPath": "images/profile.png",
         "selectedIconPath": "images/profile-actived.png"
       }
