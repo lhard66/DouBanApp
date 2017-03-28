@@ -11,11 +11,13 @@ Page({
   onLoad: function() {
     console.log('search')
   },
+  //搜索方法
   handleSearch: function(e) {
     // https://api.douban.com/v2/movie/search?q=恐怖
     if (!e.detail.value) {
       return
     }
+    wx.showToast(app.loadingConfig)
     //清空数据
     this.setData({ movies: [], movieStart: 0, search: e.detail.value, hasMore: true, showLoading: false })
     this.getMovies();
@@ -32,8 +34,15 @@ Page({
           _this.setData({ hasMore: false })
         }
       })
+      .catch(e=>{
+        console.log(e)
+      })
+      .finally(()=>{
+        wx.hideToast()
+      })
   },
   handleLoadMore: function() {
+    wx.showToast(app.loadingConfig)
     this.getMovies()
   }
 })

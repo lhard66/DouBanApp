@@ -11,6 +11,7 @@ Page({
     ]
   },
   onLoad: function() {
+    wx.showToast(app.loadingConfig)
     let _this = this;
     let board_promise = this.data.boards.map(board => {
       return app.wxfetch(app.URI + board.key, { data: { count: 6 } }).then(res => {
@@ -21,6 +22,7 @@ Page({
     })
     Promise.all(board_promise).then(boards => {
       _this.setData({ boards: boards })
+      wx.hideToast()
     })
   }
 })

@@ -9,7 +9,7 @@ Page({
     movie: {}
   },
   onLoad: function(params) {
-    // let testId = '26309788'
+    wx.showToast(app.loadingConfig)
     let _this = this;
     // https://api.douban.com/v2/movie/subject/26309788
     app.wxfetch(app.URI + 'subject/' + params.id)
@@ -19,6 +19,9 @@ Page({
       .catch(e => {
         // 处理加载图标和设置title
         console.log(e)
+      }).
+      finally(()=>{
+        wx.hideToast()
       })
   }
 })

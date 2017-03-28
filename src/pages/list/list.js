@@ -10,6 +10,7 @@ Page({
     showLoading: false
   },
   onLoad: function(params) {
+    wx.showToast(app.loadingConfig)
     let _this = this
     if (!params.type) {
       //网络参数有误，需要提醒用户
@@ -28,10 +29,18 @@ Page({
           _this.setData({ showLoading: true })
         } else {
           _this.setData({ hasMore: false })
-        }
+        }        
+      })
+      .catch(e=>{
+        console.log(e)
+      })
+      .finally(()=>{
+        wx.hideToast()
       })
   },
+  //拉至最底端时会触发此方法
   handleLoadMore: function(e) {
+    wx.showToast(app.loadingConfig)
     this.getMovies(this.data.movieType, this.data.movieStart)
   }
 })
