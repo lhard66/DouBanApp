@@ -40,7 +40,8 @@ Page({
   },
   //拉至最底端时会触发此方法
   handleLoadMore: function(e) {
-    wx.showToast(app.loadingConfig)
+    //不显示屏幕中间的加载提示。
+    // wx.showToast(app.loadingConfig)
     this.getMovies(this.data.movieType, this.data.movieStart)
   }
 })

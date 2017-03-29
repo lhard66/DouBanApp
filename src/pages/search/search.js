@@ -42,7 +42,7 @@ Page({
       })
   },
   handleLoadMore: function() {
-    wx.showToast(app.loadingConfig)
+    // wx.showToast(app.loadingConfig)
     this.getMovies()
   }
 })

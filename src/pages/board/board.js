@@ -24,5 +24,9 @@ Page({
       _this.setData({ boards: boards })
       wx.hideToast()
     })
+  },
+  onPullDownRefresh: function() {
+    console.log('push')
+    wx.stopPullDownRefresh()
   }
 })
