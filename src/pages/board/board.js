@@ -10,8 +10,7 @@ Page({
       { key: 'top250' }
     ]
   },
-  onLoad: function() {
-    console.log(wx.getSystemInfo.windowHeight)
+  onLoad: function() {    
     wx.showToast(app.loadingConfig)
     let _this = this;
     let board_promise = this.data.boards.map(board => {
@@ -25,9 +24,14 @@ Page({
       _this.setData({ boards: boards })
       wx.hideToast()
     })
+    .catch(e=>{
+      wx.showModal(app.modalConfig)
+    })
+    .finally(()=>{      
+      wx.hideToast()
+    })
   },
   onPullDownRefresh: function() {
-    console.log('push')
     wx.stopPullDownRefresh()
   }
 })

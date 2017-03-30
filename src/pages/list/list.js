@@ -14,10 +14,13 @@ Page({
     let _this = this
     if (!params.type) {
       //网络参数有误，需要提醒用户
+      let config = app.modalConfig;
+      config.content = '参数有误，请退出小程序重新打开'
+      wx.showModal(config)
+      return;
     }
-    let type = params.type || 'in_theaters'
-    this.getMovies(type, 0)
-    this.setData({ movieType: type })
+    this.getMovies(params.type)
+    this.setData({ movieType: params.type })
   },
   getMovies: function(movieType) {
     let _this = this
@@ -29,12 +32,13 @@ Page({
           _this.setData({ showLoading: true })
         } else {
           _this.setData({ hasMore: false })
-        }        
+        }
       })
-      .catch(e=>{
-        console.log(e)
+      .catch(e => {
+        console.log(app.modalConfig)
+        wx.showModal(app.modalConfig)
       })
-      .finally(()=>{
+      .finally(() => {
         wx.hideToast()
       })
   },

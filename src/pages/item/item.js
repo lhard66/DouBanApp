@@ -18,6 +18,7 @@ Page({
       })
       .catch(e => {
         // 处理加载图标和设置title
+        wx.showModal(app.modalConfig)
         console.log(e)
       }).
       finally(()=>{

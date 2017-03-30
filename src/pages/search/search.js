@@ -35,6 +35,7 @@ Page({
         }
       })
       .catch(e=>{
+        wx.showModal(app.modalConfig)
         console.log(e)
       })
       .finally(()=>{

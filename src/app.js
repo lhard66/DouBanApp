@@ -6,13 +6,18 @@ const loadingConfig = {
   mask: 'true',
   duration: 10000
 }
-
+const modalConfig = {
+  title: '网络错误',
+  content: '请检查网络是否正常连接，再次打开页面重试。',
+  showCancel: false,
+  complete: function() {
+    //退出小程序
+    console.log('wechat exit')
+  }
+}
 App({
-  onLaunch: function() {
-    //调用API从本地缓存中获取数据
-    console.log('应用全局载入事件---ltq')
-  },
   wxfetch,
   URI,
-  loadingConfig
+  loadingConfig,
+  modalConfig
 })
