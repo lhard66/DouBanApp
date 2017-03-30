@@ -6,7 +6,8 @@ Page({
     movieCount: 10,
     movieStart: 0,
     search: '',
-    hasMore: false
+    hasMore: false,
+    shaking: false
   },
   onLoad: function() {
     console.log('search')
@@ -28,6 +29,7 @@ Page({
       .then(res => {
         if (res.data.subjects.length) {
           _this.setData({ movies: _this.data.movies.concat(res.data.subjects), movieStart: _this.data.movieStart + 10 })
+          _this.setData({ shaking: false })
             //获得数据后显示加载提示
           _this.setData({ showLoading: true })
         } else {
@@ -44,6 +46,10 @@ Page({
   },
   handleLoadMore: function() {
     // wx.showToast(app.loadingConfig)
+    if(this.data.shaking){
+      return;
+    }
+    this.setData({ shaking: true })   
     this.getMovies()
   }
 })
