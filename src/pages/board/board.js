@@ -11,6 +11,7 @@ Page({
     ]
   },
   onLoad: function() {
+    console.log(wx.getSystemInfo.windowHeight)
     wx.showToast(app.loadingConfig)
     let _this = this;
     let board_promise = this.data.boards.map(board => {
