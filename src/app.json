@@ -9,10 +9,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#fff",    
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText":"小婷爱电影",
+    "navigationBarTitleText":"小婷电影",
     "enablePullDownRefresh": false
   },
   "tabBar": {
