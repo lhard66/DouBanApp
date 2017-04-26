@@ -29,9 +29,26 @@ Page({
     })
     .finally(()=>{      
       wx.hideToast()
+      wx.stopPullDownRefresh()
     })
   },
   onPullDownRefresh: function() {
-    wx.stopPullDownRefresh()
+    this.onLoad()
+  },  
+  onShareAppMessage: function() {    
+    return {
+      title: '小婷电影',
+      path: '/pages/board/board',
+      success: function(res) {
+        wx.showToast({
+          title: '分享成功'
+        })
+      },
+      fail: function(res) {
+        wx.showToast({
+          title: '分享失败'
+        })
+      }
+    }
   }
 })

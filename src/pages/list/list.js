@@ -28,10 +28,10 @@ Page({
     app.wxfetch(app.URI + movieType, { data: { count: _this.data.movieCount, start: _this.data.movieStart } })
       .then(res => {
         if (res.data.subjects.length) {
-          _this.setData({ movies: _this.data.movies.concat(res.data.subjects), movieStart: _this.data.movieStart + 10 })          
-          //取消抖动状态
+          _this.setData({ movies: _this.data.movies.concat(res.data.subjects), movieStart: _this.data.movieStart + 10 })
+            //取消抖动状态
           _this.setData({ shaking: false })
-          //获得数据后显示加载提示
+            //获得数据后显示加载提示
           _this.setData({ showLoading: true })
         } else {
           _this.setData({ hasMore: false })
@@ -43,19 +43,24 @@ Page({
       })
       .finally(() => {
         wx.hideToast()
+        wx.stopPullDownRefresh()
       })
   },
   //拉至最底端时会触发此方法
   handleLoadMore: function(e) {
     //不显示屏幕中间的加载提示。
     // wx.showToast(app.loadingConfig)
-    if(this.data.shaking){
+    if (this.data.shaking) {
       return;
     }
-    this.setData({ shaking: true })    
-    this.getMovies(this.data.movieType, this.data.movieStart)    
-    // setTimeout(function() {
-    //   _this.setData({ shaking: false })
-    // }, 3000)    
+    this.setData({ shaking: true })
+    this.getMovies(this.data.movieType, this.data.movieStart)
+      // setTimeout(function() {
+      //   _this.setData({ shaking: false })
+      // }, 3000)    
+  },
+  onPullDownRefresh: function() {
+    _this.setData({ movies: [] })
+    this.getMovies()
   }
 })

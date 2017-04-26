@@ -12,7 +12,7 @@
     "navigationBarBackgroundColor": "#fff",    
     "navigationBarTextStyle": "black",
     "navigationBarTitleText":"小婷电影",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#999999",

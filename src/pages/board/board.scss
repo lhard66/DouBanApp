@@ -15,8 +15,8 @@
   .board-item {
     margin: 40rpx 0;
     .title {
-      height: 30rpx;
-      font-size: 30rpx;
+      height: 40rpx;
+      font-size: 35rpx;
       padding-left: 10rpx;
       display: flex;
       text {
@@ -46,12 +46,14 @@
             width: 150rpx;
             margin-bottom: 10rpx;
           }
-          text {
-            text-align: center;
+          view{
             overflow: hidden;
-            white-space: nowrap;
             text-overflow: ellipsis;
-          }
+            text {
+              text-align: center;              
+              white-space: nowrap;
+            }
+          }          
         }
       }
     }
